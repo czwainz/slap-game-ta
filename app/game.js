@@ -7,14 +7,15 @@ let yeti = {
     { name: "Slap", health: -1 },
     { name: "Punch", health: -5 },
     { name: "Kick", health: -10 }
-  ]
+  ],
+  items: []
 }
 
-let items = [
-  { name: "Snowball", modifier: 2, description: 'Snowball Fight' },
-  { name: "High Kick", modifier: 4, description: 'Yeti so tall, kick so high' },
-  { name: "Avalanche", modifier: 6, description: 'AHHHHHHVALANCHE!!' }
-]
+let items = {
+  snowball: { name: "Snowball", modifier: 2, description: 'Snowball Fight' },
+  highKick: { name: "High Kick", modifier: 4, description: 'Yeti so tall, kick so high' },
+  avalanche: { name: "Avalanche", modifier: 6, description: 'AHHHHHHVALANCHE!!' }
+}
 
 // draw stats
 function update() {
@@ -42,7 +43,7 @@ drawButtons()
 
 function drawItemButtons() {
   let itemTemplate = ''
-  for (let i = 0; i < items.length; i++) {
+  for (let i = 0; i < items.key.length; i++) {
     let itemButton = items[i];
     itemTemplate += `
         <button class="btn btn-primary mx-1 my-1 shadow-sm" onclick="attack(${itemButton.health})">${itemButton.name}</button>
