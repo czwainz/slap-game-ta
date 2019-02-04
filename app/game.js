@@ -34,7 +34,7 @@ function drawButtons() {
   for (let key in yeti.attacks) {
     let attack = yeti.attacks[key];
     buttonTemplate += `
-    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="attack(${attack})">${key}</button>
+    <button class="btn btn-primary mx-1 my-1 shadow-sm" onclick="attack(${attack})">${key}</button>
     `
     document.getElementById('buttons').innerHTML = buttonTemplate
   }
@@ -46,7 +46,7 @@ function drawItemButtons() {
   for (let key in items) {
     let item = items[key]
     itemTemplate += `
-    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="attack(${item.modifier})">${item.name}</button>
+    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="addMod(${item.name})">${item.name}</button>
     `
     document.getElementById('itemButtons').innerHTML = itemTemplate
   }
@@ -54,9 +54,14 @@ function drawItemButtons() {
 drawItemButtons()
 
 
-//slap function
+//attack function
 function attack(healthIndex) {
   yeti.health += healthIndex
   yeti.hits++
   update()
+}
+
+//add modifier
+function addMods() {
+
 }
