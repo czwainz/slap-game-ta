@@ -60,15 +60,3 @@ function attack(healthIndex) {
   yeti.hits++
   update()
 }
-
-function punch() {
-  yeti.health -= 5
-  yeti.hits++
-  update()
-}
-
-function kick() {
-  yeti.health -= 10
-  yeti.hits++
-  update()
-}
