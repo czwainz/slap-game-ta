@@ -22,3 +22,15 @@ function slap() {
   player.hits++
   update()
 }
+
+function punch() {
+  player.health -= 5
+  player.hits++
+  update()
+}
+
+function kick() {
+  player.health -= 10
+  player.hits++
+  update()
+}
