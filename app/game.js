@@ -73,5 +73,20 @@ function addModifier(key) {
   update()
 }
 
+//reset function
+function reset() {
+  yeti = {
+    name: "Yeti",
+    health: 100,
+    hits: 0,
+    attacks: {
+      Slap: 1,
+      Punch: 5,
+      Kick: 10
+    },
+    items: []
+  }
+  update()
+}
 
 
