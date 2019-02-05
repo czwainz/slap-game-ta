@@ -48,7 +48,7 @@ function drawItemButtons() {
   for (let key in items) {
     let item = items[key]
     itemTemplate += `
-    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="addModifier(${item})">${item.name}</button>
+    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="addModifier('${key}')">${item.name}</button>
     `
     document.getElementById('itemButtons').innerHTML = itemTemplate
   }
@@ -63,10 +63,13 @@ function attack(health) {
 }
 
 //add modifier
-function addModifier(item) {
+function addModifier(key) {
+  yeti.items.push(items[key])
   debugger
-  yeti.items.push(item)
-  yeti.health -= item.modifier
+  for (let i = 0; i < yeti.items.length; i++) {
+    yeti.health -= items[key].modifier
+  }
+  debugger
   yeti.hits++
 }
 
