@@ -12,9 +12,9 @@ let yeti = {
 }
 
 let items = {
-  snowball: { name: "Snowball", modifier: 2, description: 'Snowball Fight' },
-  highKick: { name: "High Kick", modifier: 4, description: 'Yeti so tall, kick so high' },
-  avalanche: { name: "Avalanche", modifier: 6, description: 'AHHHHHHVALANCHE!!' }
+  snowball: { name: "Snowball", modifier: 2, description: 'Snowball Fight', count: 7 },
+  highKick: { name: "High Kick", modifier: 4, description: 'Yeti so tall, kick so high', count: 4 },
+  avalanche: { name: "Avalanche", modifier: 6, description: 'AHHHHVALANCHE!!', count: 1 }
 }
 
 // draw stats
@@ -65,13 +65,16 @@ function attack(health) {
 //add modifier
 function addModifier(key) {
   yeti.items.push(items[key])
+
   for (let i = 0; i < yeti.items.length; i++) {
     let item = yeti.items[i]
     yeti.health -= item.modifier
   }
   yeti.hits++
+  // countMods()
   update()
 }
+
 
 //reset function
 function reset() {
@@ -90,3 +93,8 @@ function reset() {
 }
 
 
+
+//counter
+// function countMods() {
+
+// }
