@@ -24,7 +24,6 @@ function update() {
   <h3>${yeti.name}</h3>
   <h5>Health: ${yeti.health}</h5>
   <h5>Hits: ${yeti.hits}</h5>
-  <h6>Items: ${yeti.items}</h6>
   `
   document.getElementById('player-stats').innerHTML = stats
 }
@@ -67,7 +66,8 @@ function attack(health) {
 function addModifier(item) {
   debugger
   yeti.items.push(item)
-  yeti.health -= item
+  yeti.health -= item.modifier
+  yeti.hits++
 }
 
 
