@@ -4,9 +4,9 @@ let yeti = {
   health: 100,
   hits: 0,
   attacks: {
-    Slap: -1,
-    Punch: -5,
-    Kick: -10
+    Slap: 1,
+    Punch: 5,
+    Kick: 10
   },
   items: []
 }
@@ -24,11 +24,13 @@ function update() {
   <h3>${yeti.name}</h3>
   <h5>Health: ${yeti.health}</h5>
   <h5>Hits: ${yeti.hits}</h5>
+  <h6>Items: ${yeti.items}</h6>
   `
   document.getElementById('player-stats').innerHTML = stats
 }
 update()
 
+//draw buttons
 function drawButtons() {
   let buttonTemplate = ''
   for (let key in yeti.attacks) {
@@ -41,27 +43,32 @@ function drawButtons() {
 }
 drawButtons()
 
+//draw items
 function drawItemButtons() {
   let itemTemplate = ''
   for (let key in items) {
     let item = items[key]
     itemTemplate += `
-    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="addMod(${item.name})">${item.name}</button>
+    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="addModifier(${item})">${item.name}</button>
     `
     document.getElementById('itemButtons').innerHTML = itemTemplate
   }
 }
 drawItemButtons()
 
-
 //attack function
-function attack(healthIndex) {
-  yeti.health += healthIndex
+function attack(health) {
+  yeti.health -= health
   yeti.hits++
   update()
 }
 
 //add modifier
-function addMods() {
-
+function addModifier(item) {
+  debugger
+  yeti.items.push(item)
+  yeti.health -= item
 }
+
+
+
