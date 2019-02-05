@@ -65,12 +65,12 @@ function attack(health) {
 //add modifier
 function addModifier(key) {
   yeti.items.push(items[key])
-  debugger
   for (let i = 0; i < yeti.items.length; i++) {
-    yeti.health -= items[key].modifier
+    let item = yeti.items[i]
+    yeti.health -= item.modifier
   }
-  debugger
   yeti.hits++
+  update()
 }
 
 
