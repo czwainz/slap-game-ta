@@ -57,22 +57,30 @@ drawItemButtons()
 
 //attack function
 function attack(health) {
-  yeti.health -= health
+  yeti.health -= health + totalMods()
   yeti.hits++
   update()
 }
 
 //add modifier
 function addModifier(key) {
-  yeti.items.push(items[key])
-
-  for (let i = 0; i < yeti.items.length; i++) {
-    let item = yeti.items[i]
-    yeti.health -= item.modifier
+  let button = document.getElementById('itemButtons')
+  if (items[key].count >= 1) {
+    yeti.items.push(items[key])
+    for (let i = 0; i < yeti.items.length; i++) {
+      let item = yeti.items[i]
+    }
+    items[key].count--
+    update()
+  } else {
+    window.alert("Cannot add anymore " + items[key].name)
   }
-  yeti.hits++
-  // countMods()
-  update()
+}
+
+function totalMods() {
+  let total = 0
+  yeti.items.forEach(i => total += i.modifier)
+  return total
 }
 
 
