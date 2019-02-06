@@ -106,7 +106,7 @@ function reset() {
 function knockout() {
   if (yeti.health <= 0) {
     document.getElementById('KO').innerHTML = `<h4><strong>YETI IS DEDDI!</strong></h4>`
-    // document.querySelectorAll("attackButtons, itemButtons")
+    document.querySelectorAll("buttons")
   } else {
     document.getElementById('KO').innerHTML = ``
   }
