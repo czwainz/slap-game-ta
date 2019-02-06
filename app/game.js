@@ -99,14 +99,16 @@ function reset() {
     },
     items: []
   }
+  document.querySelectorAll("button.itemButtons, button.attackButtons").forEach(button => button.removeAttribute('disabled'))
   update()
 }
 
 //knockout
 function knockout() {
   if (yeti.health <= 0) {
+    yeti.health = 0
     document.getElementById('KO').innerHTML = `<h4><strong>YETI IS DEDDI!</strong></h4>`
-    document.querySelectorAll("buttons")
+    document.querySelectorAll("button.itemButtons, button.attackButtons").forEach(button => button.setAttribute('disabled', "true"))
   } else {
     document.getElementById('KO').innerHTML = ``
   }
