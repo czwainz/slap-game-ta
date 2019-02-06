@@ -35,7 +35,7 @@ function drawButtons() {
   for (let key in yeti.attacks) {
     let attack = yeti.attacks[key];
     buttonTemplate += `
-    <button class="btn btn-primary mx-1 my-1 shadow-sm" onclick="attack(${attack})">${key}</button>
+    <button class="btn btn-primary mx-1 my-1 shadow-sm attackButtons" onclick="attack(${attack})">${key}</button>
     `
     document.getElementById('buttons').innerHTML = buttonTemplate
   }
@@ -48,7 +48,7 @@ function drawItemButtons() {
   for (let key in items) {
     let item = items[key]
     itemTemplate += `
-    <button class="btn btn-warning mx-1 my-1 shadow-sm" onclick="addModifier('${key}')">${item.name}</button>
+    <button class="btn btn-warning mx-1 my-1 shadow-sm itemButtons" onclick="addModifier('${key}')">${item.name}</button>
     `
     document.getElementById('itemButtons').innerHTML = itemTemplate
   }
@@ -59,12 +59,13 @@ drawItemButtons()
 function attack(health) {
   yeti.health -= health + totalMods()
   yeti.hits++
+  knockout()
   update()
 }
 
 //add modifier
 function addModifier(key) {
-  let button = document.getElementById('itemButtons')
+  // let button = document.getElementById('itemButtons')
   if (items[key].count >= 1) {
     yeti.items.push(items[key])
     for (let i = 0; i < yeti.items.length; i++) {
@@ -73,7 +74,8 @@ function addModifier(key) {
     items[key].count--
     update()
   } else {
-    window.alert("Cannot add anymore " + items[key].name)
+    window.alert('Cannot use any more ' + items[key].name)
+    // document.querySelectorAll()
   }
 }
 
@@ -98,6 +100,16 @@ function reset() {
     items: []
   }
   update()
+}
+
+//knockout
+function knockout() {
+  if (yeti.health <= 0) {
+    document.getElementById('KO').innerHTML = `<h4><strong>YETI IS DEDDI!</strong></h4>`
+    // document.querySelectorAll("attackButtons, itemButtons")
+  } else {
+    document.getElementById('KO').innerHTML = ``
+  }
 }
 
 
